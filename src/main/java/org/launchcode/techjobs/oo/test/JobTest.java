@@ -55,4 +55,41 @@ public class JobTest {
 
         assertFalse(job4.equals(job5));
     }
+
+    //testing for newline/blank line at the start and end of all the job info when printed
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job job6 = new Job("Product Tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        String testString = job6.toString();
+        assertEquals(job6.toString().charAt(0), '\n');
+        assertEquals(job6.toString().charAt(job6.toString().length()-1), '\n');
+    }
+
+    //testing to make sure it prints out as expected when using the toString Method in the job class
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job job7 = new Job("Product Tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertEquals(job7.toString(),
+            "\n" + "ID: 3" +
+                "\n" + "Name: Product Tester" +
+                "\n" + "Employer: ACME" +
+                "\n" + "Location: Desert" +
+                "\n" + "Position Type: Quality control" +
+                "\n" + "Core Competency: Persistence" +
+                "\n");
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job job8 = new Job("Product Tester", new Employer("ACME"), new Location(""), new PositionType("Quality control"), new CoreCompetency(""));
+        assertEquals(job8.toString(),
+            "\n" + "ID: 1" +
+                "\n" + "Name: Product Tester" +
+                "\n" + "Employer: ACME" +
+                "\n" + "Location: Data not available" +
+                "\n" + "Position Type: Quality control" +
+                "\n" + "Core Competency: Data not available" +
+                "\n");
+    }
 }

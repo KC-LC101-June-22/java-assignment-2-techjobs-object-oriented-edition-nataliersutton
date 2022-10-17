@@ -90,4 +90,49 @@ public class Job {
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
+
+    // TO DO: Add custom toString method to print out our job info how we want it based on our
+    //TDD tests + error type messages provided in instructions.
+
+    @Override
+    public String toString() {
+
+        String errorMsg = "Data not available";
+        String testName = this.getName();
+        String testEmployer = this.getEmployer().getValue();
+        String testLocation = this.getLocation().getValue();
+        String testPositionType = this.getPositionType().getValue();
+        String testCoreCompetency = this.getCoreCompetency().getValue();
+        
+        if (testName == null || testName.equals("")){
+            testName = errorMsg;
+        }
+        if (testEmployer == null || testEmployer.equals("")) {
+            testEmployer = errorMsg;
+        }
+        if (testLocation == null || testLocation.equals("")) {
+            testLocation = errorMsg;
+        }
+        if (testPositionType == null || testPositionType.equals("")) {
+            testPositionType = errorMsg;
+        }
+        if (testCoreCompetency == null || testCoreCompetency.equals("")) {
+            testCoreCompetency = errorMsg;
+        }
+
+        if (this.getName() == null && this.getEmployer().getValue() == null
+                && this.getLocation().getValue() == null && this.getPositionType().getValue() == null
+                && this.getCoreCompetency().getValue() == null) {
+            return "OOPS! This job does not seem to exist.";
+        }
+
+        return
+            "\n" + "ID: " + getId() +
+            "\n" + "Name: " + testName +
+            "\n" + "Employer: " + testEmployer +
+            "\n" + "Location: " + testLocation +
+            "\n" + "Position Type: " + testPositionType +
+            "\n" + "Core Competency: " + testCoreCompetency +
+            "\n";
+    }
 }
