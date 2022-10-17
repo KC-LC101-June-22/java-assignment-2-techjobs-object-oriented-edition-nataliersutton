@@ -29,7 +29,6 @@ public class Job {
         this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
-
     }
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
@@ -97,6 +96,8 @@ public class Job {
     @Override
     public String toString() {
 
+        //check for empty fields and return error message if empty
+
         String errorMsg = "Data not available";
         String testName = this.getName();
         String testEmployer = this.getEmployer().getValue();
@@ -120,11 +121,12 @@ public class Job {
             testCoreCompetency = errorMsg;
         }
 
-        if (this.getName() == null && this.getEmployer().getValue() == null
-                && this.getLocation().getValue() == null && this.getPositionType().getValue() == null
-                && this.getCoreCompetency().getValue() == null) {
-            return "OOPS! This job does not seem to exist.";
-        }
+        //Check if all fields are empty and return error message
+//        if (testName == null && testEmployer == null
+//                && testLocation == null && testPositionType == null
+//                && testCoreCompetency == null) {
+//            return "OOPS! This job does not seem to exist.";
+//        }
 
         return
             "\n" + "ID: " + getId() +
