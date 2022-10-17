@@ -51,30 +51,25 @@ public class Job {
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
 
-
     public int getId() {
         return id;
     }
-
     public String getName() {
         return name;
     }
-
     public Employer getEmployer() {
         return employer;
     }
-
     public Location getLocation() {
         return location;
     }
-
     public PositionType getPositionType() {
         return positionType;
     }
-
     public CoreCompetency getCoreCompetency() {
         return coreCompetency;
     }
+
 
     public void setName(String name) {
         this.name = name;
